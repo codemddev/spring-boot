@@ -48,7 +48,7 @@ public abstract class AnsiOutput {
 	 * @param enabled if ANSI is enabled, disabled or detected
 	 */
 	public static void setEnabled(Enabled enabled) {
-		/ CodeMD throwaway test: checking Feature Impact on this language (this PR will be closed)
+		// CodeMD throwaway test: checking Feature Impact on this language (this PR will be closed)
 		Assert.notNull(enabled, "'enabled' must not be null");
 		AnsiOutput.enabled = enabled;
 	}
