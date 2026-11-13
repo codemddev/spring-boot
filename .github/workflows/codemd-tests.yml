@@ -1,0 +1,43 @@
+# Written by CodeMD (codemd.dev) on its own branch to run tests.
+name: CodeMD test run
+'on':
+  push:
+    branches:
+    - codemd-test-runs
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-java@v4
+      with:
+        distribution: liberica
+        java-version: 17
+      id: ci_setup_0
+      continue-on-error: true
+    - uses: actions/setup-java@v4
+      with:
+        distribution: temurin
+        java-version: '17'
+      name: CodeMD setup (repository's java setup failed)
+      if: ${{ steps.ci_setup_0.outcome == 'failure' }}
+    - name: 'CodeMD test 1/1: core/spring-boot-test/src/main/java/org/springframework/boot/test/system/OutputCapt'
+      working-directory: ${{ github.workspace }}
+      run: bash .codemd/run-test.sh 0
+      timeout-minutes: 10
+      continue-on-error: true
+    - name: 'CodeMD: determine test result'
+      if: always()
+      working-directory: ${{ github.workspace }}
+      run: bash .codemd/run-test.sh finalize
+    - name: 'CodeMD: keep coverage reports'
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: codemd-coverage-reports
+        path: codemd-reports
+        if-no-files-found: ignore
+        retention-days: 90

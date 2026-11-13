@@ -1,0 +1,39 @@
+{
+  "base_sha": "4fac8e8693ccfa4c06b1b098e64ba844936106dd",
+  "change_source": "compare",
+  "changed_component_count": 1,
+  "changed_components": [
+    "core"
+  ],
+  "changed_file_count": 1,
+  "changed_function_count": 1,
+  "changed_functions": [
+    "AnsiOutput.setEnabled"
+  ],
+  "deploy_targets": [],
+  "head_sha": "e355354568f0b8cd2729b7f323ea987b41952c97",
+  "impacted_test_count": 1,
+  "impacted_tests": [
+    "core/spring-boot-test/src/main/java/org/springframework/boot/test/system/OutputCapture.java"
+  ],
+  "lists_truncated": false,
+  "reason": "Every selected test is connected to the changed code by CodeMD's deterministic discovery.",
+  "requires_full_suite": false,
+  "schema_version": 1,
+  "test_selection": [
+    {
+      "changed_file_count": 1,
+      "changed_files": [
+        "core/spring-boot/src/main/java/org/springframework/boot/ansi/AnsiOutput.java"
+      ],
+      "changed_files_truncated": false,
+      "language": "java",
+      "selected_by": [
+        "name_scan"
+      ],
+      "test_file": "core/spring-boot-test/src/main/java/org/springframework/boot/test/system/OutputCapture.java"
+    }
+  ],
+  "unresolved_file_count": 0,
+  "unresolved_files": []
+}
